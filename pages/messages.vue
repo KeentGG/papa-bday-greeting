@@ -9,12 +9,6 @@
       </div>
       <div v-for="(message, index) in messages" :key=index>
         <div class="message-card-cntr col">
-          <div class="header pull-apart y-center">
-            <div class="message-to">
-              <div>From</div>
-              <div>{{message.author || 'Anonymous'}}</div>
-            </div>
-          </div>
           <div class="message">
             {{message.message}}
           </div>
