@@ -1,19 +1,21 @@
 <template>
   <div class="container">
     <div class="wrap">
-      <h1>Hello.</h1>
-          <div class="sub_header">
-              My father just celebrated his 60th birthday! He'll appreciate any messages you'll written for him. Thanks!
-          </div>
-          <div class="message-card-cntr">
-              <div class="header pull-apart row y-center">
-                  <div class="message-to">
-                      <div>To</div>
-                      <div>Paddy</div>
-                  </div>
-                  <div class="photo"></div>
+      <div class="page-header">
+        <h1>Hello.</h1>
+        <div class="sub_header">
+            My father just celebrated his 60th birthday! He'll appreciate any messages you'll written for him. Thanks!
+        </div>
+      </div>
+      <div class="message-card-cntr">
+          <div class="header pull-apart row y-center">
+              <div class="message-to">
+                  <div>To</div>
+                  <div>Paddy</div>
               </div>
+              <div class="photo"></div>
           </div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .wrap {
     padding: 2rem 1rem;
 }
@@ -53,6 +56,10 @@ export default {
             color: #A1A1A1;
         }
     }
+}
+
+.page-header {
+  margin-bottom: 2rem;
 }
 
 .header {
