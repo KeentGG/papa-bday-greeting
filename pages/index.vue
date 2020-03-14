@@ -25,7 +25,9 @@
           <div class="form-actions row pull-right">
             <button class="secondary-button btn"
               :disabled="sendingMessage"
-              :class="{'btn-loading': this.sendingMessage}">
+              :class="{'btn-loading': this.sendingMessage}"
+              @click="clearMessage"
+              >
               Clear
             </button>
             <button class="cta-button btn"
@@ -58,6 +60,9 @@ export default {
     }
   },
   methods: {
+    clearMessage() {
+      this.message = '';
+    },
     async addGreetings() {
       let messageEl
       const ref = fireDb.collection("greetings").doc()
@@ -77,7 +82,7 @@ export default {
             this.writeError = false
             this.ctaButtonState = 'Success!';
             this.message = '';
-            setTimeout(function(){
+            setTimeout(() => {
               this.writeSuccessful = false;
               this.writeError = false;
               this.ctaButtonState = 'Send';
@@ -89,15 +94,12 @@ export default {
         this.writeSuccessful = false
         this.ctaButtonState = 'Oops, please try again.';
         console.error(e)
-        setTimeout(function(){
+        setTimeout(() => {
           this.writeSuccessful = false;
           this.writeError = false;
           this.ctaButtonState = 'Send';
-          console.log('timeout');
-        }, 1500);
+        }, 3000);
       }
-
-
     }
   }
 }
@@ -185,7 +187,10 @@ $card-gutter: 1rem;
     background-color: #37BC9B;
     color: white;
   }
-
+  &.btn-error {
+    background-color: #DA4453;
+    color: white;
+  }
 }
 
 .form-actions {
