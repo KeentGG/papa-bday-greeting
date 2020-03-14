@@ -18,7 +18,7 @@
               </div>
           </div>
           <div class="textarea">
-            <textarea id="message-area" rows="4" placeholder="Happy birthday Paddy..." v-model="message" :disabled="sendingMessage">
+            <textarea id="message-area" rows="4" placeholder="Write a message here..." v-model="message" :disabled="sendingMessage">
             </textarea>
           </div>
           <div class="divider"></div>
