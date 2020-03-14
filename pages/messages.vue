@@ -128,7 +128,7 @@ $card-gutter: 1rem;
 
 .message {
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 600;
   color: #333;
 }
 
