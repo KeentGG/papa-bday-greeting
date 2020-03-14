@@ -42,6 +42,12 @@
             </button>
           </div>
       </div>
+      <div class="read-greetings">
+        <button class="accent-button btn btn-full"
+          @click="readMessages">
+          Read all greetings
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -107,6 +113,15 @@ export default {
 
 <style lang="scss">
 $card-gutter: 1rem;
+
+.container {
+  max-width: 720px;
+  width: 100%
+}
+
+.read-greetings {
+  margin-top: 3rem;
+}
 
 .wrap {
     padding: 2rem 1rem;

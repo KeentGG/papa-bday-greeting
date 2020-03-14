@@ -30,10 +30,15 @@ import {fireDb} from '~/plugins/firebase.js'
 export default {
   mounted() {
     try {
-      const ref = fireDb.collection("greetings").get().then(querySnapshot => {
+      let localMessages = [];
+      const ref = fireDb.collection("greetings").orderBy('timestamp').get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.messages.push(doc.data());
+          console.log(doc.data());
+          localMessages.push(doc.data());
         });
+
+        localMessages.reverse();
+        this.messages = localMessages;
       });
     } catch (e) {
       console.error(e)
@@ -126,8 +131,8 @@ $card-gutter: 1rem;
 }
 
 .message {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 400;
   color: #333;
 }
 
