@@ -18,7 +18,7 @@
               </div>
           </div>
           <div class="textarea">
-            <textarea id="message-area" rows="4" placeholder="Happy birthday Paddy...">
+            <textarea id="message-area" rows="4" placeholder="Happy birthday Paddy..." v-model="message">
             </textarea>
           </div>
           <div class="divider"></div>
@@ -26,7 +26,7 @@
             <button class="secondary-button btn">
               Cancel
             </button>
-            <button class="cta-button btn">
+            <button class="cta-button btn" @click="addGreetings">
               Send
             </button>
           </div>
@@ -36,9 +36,40 @@
 </template>
 
 <script>
+import {fireDb} from '~/plugins/firebase.js'
 
 export default {
+  data() {
+    return {
+      writeSuccessful: false,
+      writeError: false,
+      message: ''
+    }
+  },
+  methods: {
+    async addGreetings() {
+      let messageEl
+      const ref = fireDb.collection("greetings").doc()
+      const document = {
+        message: this.message ?? 'Happy birthday Paddy! (auto-generated)',
+        timestamp: Date.now(),
+        author: null
+      }
 
+      try {
+        await ref.set(document)
+          .then((res) => {
+            console.log('success');
+            this.writeSuccessful = true
+            this.writeError = false
+          });
+      } catch (e) {
+        this.writeError = true
+        this.writeSuccessful = false
+        console.error(e)
+      }
+    }
+  }
 }
 </script>
 
@@ -109,6 +140,10 @@ $card-gutter: 1rem;
   &.secondary-button {
     background-color: #F5F5F5;
     color: #999;
+  }
+  &.btn-success {
+    background-color: #37BC9B;
+    color: white;
   }
 }
 
