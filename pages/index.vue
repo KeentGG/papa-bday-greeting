@@ -69,6 +69,9 @@ export default {
     clearMessage() {
       this.message = '';
     },
+    readMessages() {
+      this.$router.push({path: '/messages'});
+    },
     async addGreetings() {
       let messageEl
       const ref = fireDb.collection("greetings").doc()
