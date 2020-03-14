@@ -1,0 +1,17 @@
+{
+  "name": "bday-greeting",
+  "version": "1.0.0",
+  "description": "My striking Nuxt.js project",
+  "author": "Keanu Kent B. Gargar",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
