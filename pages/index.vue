@@ -1,72 +1,66 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        bday-greeting
-      </h1>
-      <h2 class="subtitle">
-        My striking Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    <div class="wrap">
+      <h1>Hello.</h1>
+          <div class="sub_header">
+              My father just celebrated his 60th birthday! He'll appreciate any messages you'll written for him. Thanks!
+          </div>
+          <div class="message-card-cntr">
+              <div class="header pull-apart row y-center">
+                  <div class="message-to">
+                      <div>To</div>
+                      <div>Paddy</div>
+                  </div>
+                  <div class="photo"></div>
+              </div>
+          </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 
 export default {
-  components: {
-    Logo
-  }
+
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss">
+.wrap {
+    padding: 2rem 1rem;
+}
+.sub_header {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666;
+}
+.message-card-cntr {
+    border-radius: 13px;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 1px 3px 24px -3px rgba(0,0,0,.5);
+}
+.message-to {
+    font-size: 24px;
+    font-weight: 700;
+    div {
+        display: block;
+        line-height: 1.15em;
+        &:first-child {
+            color: #CFCFCF;
+        }
+        &:last-child {
+            color: #A1A1A1;
+        }
+    }
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.header {
+    .photo {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: #777;
+    }
 }
 </style>

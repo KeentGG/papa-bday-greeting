@@ -22,8 +22,7 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+ css: ["~assets/styles.scss", "~assets/keen.scss"],
   /*
   ** Plugins to load before mounting the App
   */
@@ -48,5 +47,8 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    dir: "dist"
   }
 }
