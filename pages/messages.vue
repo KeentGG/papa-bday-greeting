@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container row center">
     <div class="wrap">
       <div class="page-header">
         <h1>Thank you all.</h1>
         <div class="sub_header">
-            My father just celebrated his 60th birthday! He'll appreciate any messages you'll written for him. Thanks!
+
         </div>
       </div>
       <div v-for="(message, index) in messages" :key=index>
@@ -82,6 +82,8 @@ $card-gutter: 1rem;
 
 .wrap {
     padding: 2rem 1rem;
+    max-width: 720px;
+    width: 100%
 }
 .sub_header {
     font-size: 20px;

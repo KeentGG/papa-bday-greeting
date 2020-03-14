@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container row center">
     <div class="wrap">
       <div class="page-header">
         <h1>Hello.</h1>
@@ -117,17 +117,14 @@ export default {
 <style lang="scss">
 $card-gutter: 1rem;
 
-.container {
-  max-width: 720px;
-  width: 100%
-}
-
 .read-greetings {
   margin-top: 3rem;
 }
 
 .wrap {
     padding: 2rem 1rem;
+    max-width: 720px;
+    width: 100%
 }
 .sub_header {
     font-size: 20px;
