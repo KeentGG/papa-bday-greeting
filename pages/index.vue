@@ -161,38 +161,6 @@ $card-gutter: 1rem;
   &::placeholder { color: #bbb}
 }
 
-.btn {
-  font-size: 17px;
-  font-weight: 700;
-  border-radius: 9px;
-  padding: 9px 19px;
-  border: 1px solid white;
-  &.cta-button {
-    background-color: #5D9CEC;
-    color: white;
-    &.btn-loading {
-      background-color: white;
-      border: 1px solid #BBB;
-      color: #999;
-    }
-  }
-  &.secondary-button {
-    background-color: #F5F5F5;
-    color: #999;
-    &.btn-loading {
-      color: #CFCFCF;
-    }
-  }
-  &.btn-success {
-    background-color: #37BC9B;
-    color: white;
-  }
-  &.btn-error {
-    background-color: #DA4453;
-    color: white;
-  }
-}
-
 .form-actions {
   margin-top: $card-gutter;
   button + button{
