@@ -18,16 +18,25 @@
               </div>
           </div>
           <div class="textarea">
-            <textarea id="message-area" rows="4" placeholder="Happy birthday Paddy..." v-model="message">
+            <textarea id="message-area" rows="4" placeholder="Happy birthday Paddy..." v-model="message" :disabled="sendingMessage">
             </textarea>
           </div>
           <div class="divider"></div>
           <div class="form-actions row pull-right">
-            <button class="secondary-button btn">
-              Cancel
+            <button class="secondary-button btn"
+              :disabled="sendingMessage"
+              :class="{'btn-loading': this.sendingMessage}">
+              Clear
             </button>
-            <button class="cta-button btn" @click="addGreetings">
-              Send
+            <button class="cta-button btn"
+              :disabled="sendingMessage"
+              :class="{
+                'btn-loading': this.sendingMessage,
+                'btn-success': this.writeSuccessful && !this.writeError && !this.sendingMessage,
+                'btn-error': !this.writeSuccessful && this.writeError && !this.sendingMessage,
+              }"
+              @click="addGreetings">
+              {{ ctaButtonState }}
             </button>
           </div>
       </div>
@@ -43,7 +52,9 @@ export default {
     return {
       writeSuccessful: false,
       writeError: false,
-      message: ''
+      sendingMessage: false,
+      message: '',
+      ctaButtonState: 'Send'
     }
   },
   methods: {
@@ -56,18 +67,37 @@ export default {
         author: null
       }
 
+      this.sendingMessage = true;
+      this.ctaButtonState = 'Loading...';
       try {
-        await ref.set(document)
+        return await ref.set(document)
           .then((res) => {
-            console.log('success');
+            this.sendingMessage = false
             this.writeSuccessful = true
             this.writeError = false
+            this.ctaButtonState = 'Success!';
+            this.message = '';
+            setTimeout(function(){
+              this.writeSuccessful = false;
+              this.writeError = false;
+              this.ctaButtonState = 'Send';
+            }, 1500);
           });
       } catch (e) {
+        this.sendingMessage = false
         this.writeError = true
         this.writeSuccessful = false
+        this.ctaButtonState = 'Oops, please try again.';
         console.error(e)
+        setTimeout(function(){
+          this.writeSuccessful = false;
+          this.writeError = false;
+          this.ctaButtonState = 'Send';
+          console.log('timeout');
+        }, 1500);
       }
+
+
     }
   }
 }
@@ -122,9 +152,11 @@ $card-gutter: 1rem;
 #message-area {
   font-size: 20px;
   color: #333;
-  font-weight: 400;
+  font-weight: 500;
   width: 100%;
-  font-family: 'Avenir';
+  font-family: 'Avenir', 'Roboto';
+  border: none;
+  &::placeholder { color: #bbb}
 }
 
 .btn {
@@ -132,19 +164,28 @@ $card-gutter: 1rem;
   font-weight: 700;
   border-radius: 9px;
   padding: 9px 19px;
-  border: none;
+  border: 1px solid white;
   &.cta-button {
     background-color: #5D9CEC;
     color: white;
+    &.btn-loading {
+      background-color: white;
+      border: 1px solid #BBB;
+      color: #999;
+    }
   }
   &.secondary-button {
     background-color: #F5F5F5;
     color: #999;
+    &.btn-loading {
+      color: #CFCFCF;
+    }
   }
   &.btn-success {
     background-color: #37BC9B;
     color: white;
   }
+
 }
 
 .form-actions {
